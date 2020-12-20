@@ -44,7 +44,7 @@ public class GoogleQuery
 
 		this.searchKeyword = searchKeyword;
 
-		this.url = "http://www.google.com/search?q="+searchKeyword+"?ie=UTF-8";
+		this.url = "http://www.google.com/search?q="+searchKeyword+"?oe=utf-8?num=20";
 		rootPage = new WebPage("https://www.google.com/", "Google");		
 		tree = new WebTree(rootPage);
 	}
@@ -118,7 +118,7 @@ public class GoogleQuery
 				}
 				citeUrl=citeUrl.substring(7,i);
 				System.out.println(citeUrl);
-				if(citeUrl.contains("wiki")&&citeUrl.contains("%25"))
+				if(citeUrl.contains("wiki")&&citeUrl.contains("%25")||citeUrl.contains("map")||citeUrl.contains("youtube"))
 				{
 					
 				}
@@ -126,6 +126,7 @@ public class GoogleQuery
 				{
 					saveToNode(citeUrl,title);
 					calculateScore();
+					
 				}
 				
 
@@ -135,7 +136,6 @@ public class GoogleQuery
 
 			}
 
-			
 
 		}
 		return retVal;
